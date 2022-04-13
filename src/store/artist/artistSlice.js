@@ -1,29 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchArtist } from "./fetchArtist";
 
-export const fetchArtist = createAsyncThunk(
-  "artists/fetchArtist",
-  async (artistName, { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/${artistName}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Server Error!");
-      }
-
-      const data = await response.json();
-
-      console.log(data);
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-const todoSlice = createSlice({
+const artistSlice = createSlice({
   name: "artist",
   initialState: {
     artist: {},
@@ -46,4 +24,4 @@ const todoSlice = createSlice({
   },
 });
 
-export default todoSlice.reducer;
+export default artistSlice.reducer;

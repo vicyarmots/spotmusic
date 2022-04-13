@@ -1,20 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchArtist } from "../../store/artist/artistSlice";
-import { SearchField } from "../../components";
+import React from "react";
+import { SearchField, Artist } from "../../components";
 
 const ArtistInfoPage = () => {
-  const artist = useSelector((state) => state.artist);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchArtist());
-  }, [dispatch]);
-
   return (
     <div>
       <SearchField />
-      {artist}
+      <Artist />
     </div>
   );
 };
